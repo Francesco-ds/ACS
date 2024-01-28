@@ -66,7 +66,7 @@ function tau = RNE_formulation(robot,q,dq,ddq,g0)
     %third rev joint
     w3_3 = (R2_3)' * w2_2 + R2_3' * dq(3) * z0;
     d_w3_3 = (R2_3)' * d_w2_2 + R2_3' * (ddq(3) * z0 + cross(dq(3) * w2_2,z0));
-    dd_p3_3 = (R2_3)' * dd_p2_2 + cross(d_w2_2,r3_23) + cross(w3_3,cross(w3_3,r3_23));
+    dd_p3_3 = (R2_3)' * dd_p2_2 + cross(d_w3_3,r3_23) + cross(w3_3,cross(w3_3,r3_23));
     dd_p3_c3 = dd_p3_3 + cross(d_w3_3,r3_3c3) + cross(w3_3,cross(w3_3,r3_3c3));
     d_w2_m3 = d_w2_2;
 
