@@ -12,7 +12,7 @@ g0 = [0;0;-9.81];
 % 
 B = zeros(3,3,'sym');
 
-for i = 3:3
+for i = 1:3
     ei = zeros(3,1);
     ei(i) = 1; % [1 1 1] diagonal
     B(:,i) = RNE_formulation(robot,robot.q,zero,ei,0); %dq = 0
@@ -30,3 +30,4 @@ disp('B_robot')
 vpa(simplify(robot.B),2)
 disp('B_rne')
 vpa(simplify(B),2)
+
