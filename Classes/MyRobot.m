@@ -435,6 +435,13 @@ classdef MyRobot < handle
         function [] = set_G_operational(this)
             this.G_operational = vpa(simplify(simplify(pinv(this.Ana_Jac'))*simplify(this.G)),2);
         end
+
+        function ddq = forward_dyn(this)
+            tau = sym('tau', [3, 1]);
+            %calculate inverse formula for ddq
+            ddq = inv(this.B) * (tau - this.C*this.dq - this.G);
+            ddq = vpa(simplify(ddq),2);
+        end
     end
 
 
