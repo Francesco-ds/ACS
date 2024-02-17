@@ -2,7 +2,7 @@ KD = [20;100;20];
 KP = [80; 1000; 100];
 
 clear qd dqd ddqd
-hat_flag = 0;
+hat_flag = 1;
 
 %trajectory
 qi = [0 0 0]';

@@ -71,7 +71,7 @@ H0_3 = robot.T_giunto{3};
 IL1_1 = link_1.I_i;
 IL2_2 = link_2.I_i;
 IL3_3 = link_3.I_i;
- syms m1 m2 m3
+ syms m1 m2 m3 real
 B1 = link_1.mass * (JPL1' * JPL1) + (JOL1'*H0_1(1:3,1:3) * IL1_1 * H0_1(1:3,1:3)'*JOL1);
 B2 = link_2.mass * (JPL2' * JPL2) + (JOL2'*H0_2(1:3,1:3) * IL2_2 * H0_2(1:3,1:3)'*JOL2);
 B3 = link_3.mass * (JPL3' * JPL3) + (JOL3'*H0_3(1:3,1:3) * IL3_3 * H0_3(1:3,1:3)'*JOL3);
