@@ -43,8 +43,8 @@ end
 function [sys,x0,str,ts]=mdlInitializeSizes(n, qi, dqi)
 
 sizes = simsizes;
-sizes.NumContStates  = 0;%q,qdot for each joint %swapped
-sizes.NumDiscStates  = 6;
+sizes.NumContStates  = 6;%q,qdot for each joint %!swapped
+sizes.NumDiscStates  = 0;
 sizes.NumOutputs     = 2*n; 
 sizes.NumInputs      = n;%n dof
 sizes.DirFeedthrough = 0;%no direct link to input and output 
