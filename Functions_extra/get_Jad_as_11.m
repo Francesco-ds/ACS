@@ -10,11 +10,11 @@ d1 = 0.4;
 d2 = 0.3;
 d3 = 0.24;
 
-TD_ee = get_T_desired_ee_as_11(q,T_des);
-
-euler_angles = rotm2eul(TD_ee(1:3,(1:3)),'ZYZ');
-phi = euler_angles(1);
-theta = euler_angles(2);
+Tde = get_T_desired_ee_as_11(q, Td);
+%slide 29, robotics Kinematics
+angles = tform2eul(Tde, 'ZYZ');
+phi = angles(1);
+theta = angles(2);
 
 R_des = eul2rotm(x_tilde(4:6)');
 
