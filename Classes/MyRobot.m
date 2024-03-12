@@ -12,6 +12,7 @@ classdef MyRobot < handle
         Geo_Jac sym
         Ana_Jac sym
         DH sym
+        new_Ja sym
         J_A_valuated
         Ja_derivative
         Ja_inverse
@@ -174,9 +175,9 @@ classdef MyRobot < handle
             y_coord = double(y_coord);
             z_coord = double(z_coord);
             q1_sol = real(atan2(y_coord,x_coord));
-            q3_solution_equation_sin = asin(    (1/-d3) * (-1 + (y_coord / sin(q1))));
+            q3_solution_equation_sin =asin(-(1/d3) * ((y_coord/sin(q1_sol) - d1)));
             q3_solution_equation_no_distance_sin = subs(q3_solution_equation_sin,[db d1 d2 d3], this.links_lenghts);
-            q3_solution_equation_cos = acos(    (1/-d3) * (-1 + (x_coord / sin(q1))));
+            q3_solution_equation_cos = asin(-(1/d3) * ((x_coord/cos(q1_sol) - d1))); % should be always asin????/
             q3_solution_equation_no_distance_cos = subs(q3_solution_equation_cos,[db d1 d2 d3], this.links_lenghts);
             if q1_sol == pi/2
                 q3_sol = double(real(subs(q3_solution_equation_no_distance_sin,q1,q1_sol)));
@@ -339,14 +340,19 @@ classdef MyRobot < handle
         end
 
         function [] = set_C(this)
-            C = sym(zeros(3,3));
-            for i = 1:3
-               for j = 1:3
-                    C(i,j) = this.c_coeff(i,j);
-               end
-              
+           C = sym(zeros(3,3));
+            B = this.B;
+            q = this.q;
+            dq = this.dq;
+            for i=1:3
+                for j=1:3
+                    for k=1:3
+                        C(i,j) = C(i,j) + 1/2 * (  + diff(B(i,j), q(k)) ...
+                                                                 + diff(B(i,k), q(j)) ...
+                                                                 - diff(B(j,k), q(i))) * dq(k);
+                    end        
+                end
             end
-
             this.C = C;
         end
 
