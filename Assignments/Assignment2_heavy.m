@@ -10,9 +10,9 @@ link_3 = Cylinder('cyl',0.02,0.24,[-d3/2 0 0],3); %change to z out
 link_1.set_mass();
 link_2.set_mass();
 link_3.set_mass();
-link_1.mass = link_1.mass + 2;
-link_2.mass = link_2.mass + 1.7;
-link_3.mass = link_3.mass + 2.5;
+link_1.mass = link_1.mass + 2.8;
+link_2.mass = link_2.mass + 3.2;
+link_3.mass = link_3.mass + 5.1;
 % attach robot to links
 link_1.set_robot(robot);
 link_2.set_robot(robot);

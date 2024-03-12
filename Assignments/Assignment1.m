@@ -5,13 +5,13 @@ disp(robot.DH);
 
 %% direct kinematics
 %set the config you wanna test
-robot.set_config([pi/2 0 pi/2]);
+robot.set_config([pi/7 -0.1 pi/6]);
 robot.set_direct_kinematics();
 disp('The robot direct kinematics is: ');
 disp(simplify(robot.direct_kin));
 
 %% inverse kinematics
-robot.set_inverse_kinematics([pi/2 0 pi/2]);
+robot.set_inverse_kinematics([pi/7 -0.1 pi/6]);
 
 %% geometrical jacobian
 robot.set_geometric_jacobian()

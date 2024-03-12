@@ -6,7 +6,8 @@ disp(vpa(simplify(robot.B),2))
 %set C matrix
 robot.set_C
 disp('Matrix C is: ')
-disp(vpa(simplify(robot.C),2))
+disp(vpa(simplify(robot.C),3))
+
 
 %set G matrix
 robot.set_G

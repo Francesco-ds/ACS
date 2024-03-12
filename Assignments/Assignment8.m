@@ -1,8 +1,8 @@
 % 1dof adaptice control law
 
-KD = 40;
+KD = 30;
 lambda = 10;
-Ktheta = inv(diag([10 10 10])); % non si puo cambiare il primo termine o esplode?
+Ktheta = inv(diag([2 1 10]));
 
 I = 0.3;
 F = 0.1;

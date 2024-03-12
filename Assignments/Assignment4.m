@@ -16,7 +16,7 @@ for i = 1:3
 end
 
 
-syms q1 q2 q3 dq1 dq2 dq3 d1 d2 d3 db real
+syms q1 q2 q3 dq1 dq2 dq3 ddq1 ddq2 ddq3 d1 d2 d3 db real
 disp('B_robot')
 vpa(simplify(robot.B),2)
 disp('B_rne')
@@ -28,9 +28,9 @@ disp('G_rne')
 vpa(simplify(G),2)
 disp('G_robot')
 
-disp('Tau_robot')
-C_robot = vpa(simplify(robot.Tau),2)
-disp('Tau_rne')
-tau = vpa(simplify(tau),2)
-vpa(simplify(subs(C_robot,[q1 q2 q3 dq1 dq2 dq3 db d1 d2 d3],[-pi/6 0.2 pi/5 5 -0.2 0.1 robot.links_lenghts])),2)
-vpa(simplify(subs(tau,[q1 q2 q3 dq1 dq2 dq3 db d1 d2 d3],[-pi/6 0.2 pi/5 5 -0.2 0.1 robot.links_lenghts])),2)
+disp('C_robot');
+C_robot = vpa(simplify(robot.C*robot.dq),2);
+disp('C_rne');
+C_rne = vpa(simplify(C),2);
+vpa(simplify(subs(robot.Tau,[q1 q2 q3 dq1 dq2 dq3 ddq1 ddq2 ddq3 db d1 d2 d3 ],[pi/6 -0.15 -pi/3 9 14 -7 -4 2.5 5 robot.links_lenghts])),2)
+vpa(simplify(subs(tau,[q1 q2 q3 dq1 dq2 dq3 ddq1 ddq2 ddq3 db d1 d2 d3 ],[pi/6 -0.15 -pi/3 9 14 -7 -4 2.5 5 robot.links_lenghts])),2)
